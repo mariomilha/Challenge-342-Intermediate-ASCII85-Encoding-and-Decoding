@@ -1,4 +1,4 @@
-package app;
+package app.encode;
 
 import org.junit.Assert;
 import org.junit.Test;
@@ -23,6 +23,24 @@ public class EncodeToASCII85Test {
 
         final String encodedMsg = encodeToASCII85.encode("sure");
         Assert.assertEquals("F*2M7", encodedMsg);
+    }
+
+    @Test
+    public void testComplete(){
+        final EncodeToASCII85 encodeToASCII85 =
+                new EncodeToASCII85(new StringSplitter(), new StringToInt(), new Decompose85());
+
+        final String encodedMsg = encodeToASCII85.encode("Attack at dawn");
+        Assert.assertEquals("6$.3W@r!2qF<G+&GA[", encodedMsg);
+    }
+
+    @Test
+    public void testDot(){
+        final EncodeToASCII85 encodeToASCII85 =
+                new EncodeToASCII85(new StringSplitter(), new StringToInt(), new Decompose85());
+
+        final String encodedMsg = encodeToASCII85.encode(".");
+        Assert.assertEquals("/c", encodedMsg);
     }
 
 

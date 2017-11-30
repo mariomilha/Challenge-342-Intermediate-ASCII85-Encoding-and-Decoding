@@ -1,4 +1,4 @@
-package app;
+package app.encode;
 
 import org.junit.Assert;
 import org.junit.Test;
@@ -112,6 +112,16 @@ public class StringSplitterTest {
         String value = "ola seu banana";
         final StringSplitter stringSplitter = new StringSplitter();
         final String[] splitResult = stringSplitter.split(value, 16);
+
+        Assert.assertTrue(1 == splitResult.length);
+        Assert.assertTrue(value.equals(splitResult[0]));
+    }
+
+    @Test
+    public void testSplitterDot(){
+        String value = ".";
+        final StringSplitter stringSplitter = new StringSplitter();
+        final String[] splitResult = stringSplitter.split(value, 4);
 
         Assert.assertTrue(1 == splitResult.length);
         Assert.assertTrue(value.equals(splitResult[0]));

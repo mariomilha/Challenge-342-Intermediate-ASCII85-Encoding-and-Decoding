@@ -1,4 +1,4 @@
-package app;
+package app.encode;
 
 @FunctionalInterface
 public interface IStringSplitter {

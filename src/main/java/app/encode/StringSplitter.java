@@ -1,11 +1,11 @@
-package app;
+package app.encode;
 
 public class StringSplitter implements IStringSplitter {
 
     @Override
     public String[] split(final String toSplit, final int segmentSize) {
         final int length = toSplit.length();
-        final int numberOfSplits = (int) ((length / (double)segmentSize) + 0.5);
+        final int numberOfSplits = getSplitNumber(segmentSize, length);
         String[] toReturn = new String[numberOfSplits];
         for (int i = 0; i<numberOfSplits; i++) {
             final int startPosition = i * segmentSize;
@@ -17,5 +17,11 @@ public class StringSplitter implements IStringSplitter {
             }
         }
         return toReturn;
+    }
+
+    private int getSplitNumber(int segmentSize, int length) {
+        final int quotient = length / segmentSize;
+        final int remainder = length % segmentSize;
+        return remainder>0? quotient + 1 : quotient;
     }
 }
