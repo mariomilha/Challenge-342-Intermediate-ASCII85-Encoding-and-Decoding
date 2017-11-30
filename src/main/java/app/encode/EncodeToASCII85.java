@@ -1,5 +1,9 @@
 package app.encode;
 
+import app.utils.INumberDecomposer;
+import app.utils.IStringSplitter;
+import app.utils.IStringToInt;
+
 import java.util.Arrays;
 
 

@@ -1,4 +1,4 @@
-package app.encode;
+package app.utils;
 
 public class StringSplitter implements IStringSplitter {
 
