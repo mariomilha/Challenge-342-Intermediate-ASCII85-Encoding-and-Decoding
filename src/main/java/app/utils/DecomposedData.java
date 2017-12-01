@@ -1,5 +1,7 @@
 package app.utils;
 
+import java.util.Arrays;
+
 public class DecomposedData {
 
     private char[] chars;
@@ -21,4 +23,10 @@ public class DecomposedData {
         return chars[i];
     }
 
- }
+    @Override
+    public String toString() {
+        return "DecomposedData{" +
+                "chars=" + Arrays.toString(chars) +
+                '}';
+    }
+}

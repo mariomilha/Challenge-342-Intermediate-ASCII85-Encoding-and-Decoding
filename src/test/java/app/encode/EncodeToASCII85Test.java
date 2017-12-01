@@ -37,6 +37,24 @@ public class EncodeToASCII85Test {
     }
 
     @Test
+    public void testComplete2(){
+        final EncodeToASCII85 encodeToASCII85 =
+                new EncodeToASCII85(new StringSplitter(), new StringToInt(), new Decompose85());
+
+        final String encodedMsg = encodeToASCII85.encode("Mom, send dollars!");
+        Assert.assertEquals("9lFl\"+EM+3A0>E$Ci!O#F!1", encodedMsg);
+    }
+
+    @Test
+    public void testCompleteDawn(){
+        final EncodeToASCII85 encodeToASCII85 =
+                new EncodeToASCII85(new StringSplitter(), new StringToInt(), new Decompose85());
+
+        final String encodedMsg = encodeToASCII85.encode("dawn");
+        Assert.assertEquals("A79\\\"", encodedMsg);
+    }
+
+    @Test
     public void testDot(){
         final EncodeToASCII85 encodeToASCII85 =
                 new EncodeToASCII85(new StringSplitter(), new StringToInt(), new Decompose85());
