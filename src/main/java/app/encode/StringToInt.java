@@ -1,4 +1,4 @@
-package app.utils;
+package app.encode;
 
 import java.util.stream.IntStream;
 

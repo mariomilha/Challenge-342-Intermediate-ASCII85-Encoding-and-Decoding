@@ -1,8 +1,6 @@
 package app.encode;
 
-import app.utils.INumberDecomposer;
 import app.utils.IStringSplitter;
-import app.utils.IStringToInt;
 
 import java.util.Arrays;
 
@@ -32,8 +30,12 @@ public class EncodeToASCII85 implements IEncoder {
                         .map(value -> value + 33)
                         .mapToObj(this::toAscii)
                         .collect(StringBuilder::new, StringBuilder::append, StringBuilder::append);
-        final int toRemove = getNumberOfNullChar(toEncode);
         final String rawResult = stringBuilder.toString();
+        return trimValue(toEncode, rawResult);
+    }
+
+    public String trimValue(String original, String rawResult) {
+        final int toRemove = getNumberOfNullChar(original);
         return rawResult.substring(0, rawResult.length()- toRemove);
     }
 

@@ -18,17 +18,22 @@ public class DecoderASCII85 implements IDecoder {
     @Override
     public String decode(String value) {
         final String[] split = spliter.split(value, 5);
-        Stream.of(split)
+        return Stream.of(split)
                 .map(String::toCharArray)
                 .map(DecomposedData::new)
                 .peek(decomposedData -> decomposedData.addAll(-33))
-                .mapToInt(composer::compose);
-        return null;
+                .mapToInt(composer::compose)
+                .mapToObj(this::bitToString)
+                .collect(StringBuilder::new, StringBuilder::append, StringBuilder::append)
+                .toString();
     }
 
-    private String megaToStrin(int s) {
-
-        return null;
+    private String bitToString(int value) {
+        return new String(new byte[]{
+                (byte) (value >> 24),
+                (byte) (value >> 16),
+                (byte) (value >> 8),
+                (byte) value});
     }
 
     private DecomposedData asd(String a) {

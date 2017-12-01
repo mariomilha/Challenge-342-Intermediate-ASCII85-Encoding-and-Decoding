@@ -1,10 +1,13 @@
 package app.utils;
 
+import app.decode.IComposer;
+import app.encode.INumberDecomposer;
+
 import java.util.stream.IntStream;
 
 
 
-public class Decompose85 implements INumberDecomposer {
+public class Decompose85 implements INumberDecomposer, IComposer {
 
     private static final int EIGTHY_FIVE_TO_THE_FORTH = 85*85*85*85;
     private static final int EIGTHY_FIVE_TO_THE_THIRTH = 85*85*85;
@@ -23,5 +26,15 @@ public class Decompose85 implements INumberDecomposer {
         int  lastParcel = actualizedValue / EIGTHY_FIVE;
         actualizedValue -= EIGTHY_FIVE * lastParcel;
         return IntStream.of(firstParcel, secondParcel, thirthParcel, lastParcel, actualizedValue);
+    }
+
+    @Override
+    public int compose(DecomposedData value) {
+        int toReturn = value.getData(0) * EIGTHY_FIVE_TO_THE_FORTH;
+        toReturn += value.getData(1) * EIGTHY_FIVE_TO_THE_THIRTH;
+        toReturn += value.getData(2) * EIGTHY_FIVE_TO_THE_SECOND;
+        toReturn += value.getData(3) * EIGTHY_FIVE;
+        toReturn += value.getData(4);
+        return toReturn;
     }
 }

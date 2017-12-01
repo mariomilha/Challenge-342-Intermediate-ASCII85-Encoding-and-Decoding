@@ -1,4 +1,4 @@
-package app.utils;
+package app.encode;
 
 import org.junit.Assert;
 import org.junit.Test;

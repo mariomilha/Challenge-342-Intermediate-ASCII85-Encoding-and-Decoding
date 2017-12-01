@@ -2,7 +2,6 @@ package app.encode;
 
 import app.utils.Decompose85;
 import app.utils.StringSplitter;
-import app.utils.StringToInt;
 import org.junit.Assert;
 import org.junit.Test;
 
